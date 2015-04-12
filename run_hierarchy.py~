@@ -31,8 +31,8 @@ std = train.std(axis = 1)
 train['mean'] = mean 
 train['std'] = std
 
-mean = test.mean(axis = 1)
-std = test.std(axis = 1)
+mean = np.mean(test, axis = 1)
+std = np.std(test, axis = 1)
 test['mean'] = mean
 test['std'] = std
 

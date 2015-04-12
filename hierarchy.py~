@@ -4,7 +4,6 @@ import numpy as np
 import sys
 from sklearn import ensemble, feature_extraction, preprocessing, grid_search, cross_validation, metrics, linear_model, decomposition
 import xgboost as xgb
-reload(xgb)
 import cPickle as cp
 import otto_utils
 
