@@ -23,4 +23,6 @@ class XgbWrapper (ClassifierMixin):
 
     def predict_proba(self, X):
         dtest = xgb.DMatrix(X, label=None)
-        return self.bst.predict(dtest)
+        preds = self.bst.predict(dtest)
+        #print "preds shape ", preds.shape
+        return preds

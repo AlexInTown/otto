@@ -1,5 +1,5 @@
-# import stacking
-# reload(stacking)
+import stacking
+reload(stacking)
 # from stacking import Stacking
 
 
@@ -10,7 +10,8 @@ import xgboost as xgb
 import pandas as pd
 
 from sklearn import cross_validation, ensemble, linear_model, preprocessing
-from sklearn.ensemble import stacking
+#from sklearn.ensemble import stacking
+#reload(stacking)
 import xgb_wrapper
 reload(xgb_wrapper)
 from xgb_wrapper import XgbWrapper
@@ -46,11 +47,12 @@ test = np.asarray(test)
 
 # load useful parameters
 param_list = cp.load(open('./data/param_raw_train_22.pkl', 'rb'))
-param_list = sorted(param_list, key = lambda x: x[0])[:3]
+param_list = sorted(param_list, key = lambda x: x[0])[:22]
 print param_list
 
 other = {'silent':1, 'objective':'multi:softprob', 'num_class':9, 'nthread': 4, 'eval_metric': 'mlogloss', 'seed':0}
-
+for i in xrange(len(param_list)):
+    param_list[i][2].update(other)
 # initialize xgboost models
 clfs = [XgbWrapper(param, ntree) for loss, ntree, param in param_list]
 
